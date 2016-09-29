@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title>毛玻璃效果</title>
+    <link rel="stylesheet" href="./css/style.css?v2">
+    <script type="text/javascript" src="./js/vue.min.js"></script>
+    <script type="text/javascript" src="./js/zepto.min.js"></script>
+    <script type="text/javascript" src="./js/app.js?v2"></script>
+</head>
+<body id="app">
+    <!-- container -->
+    <div class="btnGroup">
+        <div class="btn-top">
+            <a href="javascript:;" class="btns btns-title">标题</a>
+            <a href="javascript:;" class="btns btns-1">按钮1</a>
+            <a href="javascript:;" class="btns btns-2">按钮2</a>
+        </div>
+        <div class="btn-bot">
+            <a class="btns btns-cancel" v-on:click="hideChooseDialog">Cancel</a>
+        </div>
+    </div>
+    <div class="listGroup">
+        <a class="lg-item lg-title">
+            <div class="left"><i class="icon i-add"></i></div>
+            <div class="right">
+                <p class="p1">按钮1</p>
+                <p class="p2">描述</p>
+            </div>
+        </a>
+        <a class="lg-item">
+            <div class="left"><i class="icon i-add"></i></div>
+            <div class="right">
+                <p class="p">按钮2</p>
+            </div>
+        </a>
+    </div>
+    <div class="shade" id="shade" v-on:click="hideChooseDialog"></div>
+    <div class="container">
+        <div class="banner">
+            <div class="title">#大标题</div>
+            <a href="javascript:;" class="btn btn-lar" v-on:click='showChooseDialog'>Click here</a>
+        </div>
+        <div class="rule">
+            <div class="text">描述描述!</div>
+            <a href="javascript:;" class="rule-link" v-on:click="itermsShow">详情 <i class="icon i-right"></i></a>
+        </div>
+        <div class="main">
+            <div class="tab">
+                <a href="javascript:;" v-for="item in tabBtns" class="tab-btn{{item.onClass}}" style="" v-on:click="toggleList">{{ item.text }}</a>
+                <div class="line" id='tab-line' v-bind:style="{left:lineLeft+'%'}"></div>
+            </div>
+            
+            <div class="con">
+                <!-- list popular -->
+                <ul class="list list-po" v-show="popularShow" transition="fade">
+                    <li class="li-item">
+                        <i class="icon i-flag">1</i>
+                        <i class="icon i-play"></i>
+                        <div class="li-foodter">
+                            <h4>我是张三</h4>
+                            <div class="li-f-like"><i class="icon i-like"></i>1,962,527</div>
+                        </div>
+                    </li><li class="li-item">
+                        <i class="icon i-flag">2</i>
+                        <i class="icon i-play"></i>
+                        <div class="li-foodter">
+                            <h4>哥是李四</h4>
+                            <div class="li-f-like"><i class="icon i-like"></i>1,790,527</div>
+                        </div>
+                    </li><li class="li-item">
+                        <i class="icon i-flag">3</i>
+                        <i class="icon i-play"></i>
+                    </li><li class="li-item">
+                        <i class="icon i-play"></i>
+                    </li><li class="li-item">
+                        <i class="icon i-play"></i>
+                    </li><li class="li-item">
+                        <i class="icon i-play"></i>
+                    </li><li class="li-item">
+                        <i class="icon i-play"></i>
+                    </li><li class="li-item">
+                        <i class="icon i-play"></i>
+                    </li><li class="li-item">
+                        <i class="icon i-play"></i>
+                    </li><li class="li-item">
+                        <i class="icon i-play"></i>
+                    </li><li class="li-item">
+                        <i class="icon i-play"></i>
+                    </li>
+                </ul>
+                <!--/ list popular -->
+                <!-- list recent -->
+                <ul class="list list-re" v-show="!popularShow" transition="fade">
+                    <li class="li-item">
+                        <i class="icon i-play"></i>
+                    </li><li class="li-item">
+                        <i class="icon i-play"></i>
+                    </li><li class="li-item">
+                        <i class="icon i-play"></i>
+                    </li><li class="li-item">
+                        <i class="icon i-play"></i>
+                    </li><li class="li-item">
+                        <i class="icon i-play"></i>
+                    </li><li class="li-item">
+                        <i class="icon i-play"></i>
+                    </li><li class="li-item">
+                        <i class="icon i-play"></i>
+                    </li><li class="li-item">
+                        <i class="icon i-play"></i>
+                    </li><li class="li-item">
+                        <i class="icon i-play"></i>
+                    </li>
+                </ul>
+                <!--/ list recent -->
+            </div>
+        </div>
+        
+    </div>
+    <!--/ container -->
+
+    <!-- container iterms -->
+    <div class="container-iterms" v-show="iShow" transition="go-left">
+        <div class="header-i">
+            <a class="header-left" href="javascript:;" v-on:click="itermsShow"><i class="icon i-left"></i></a>
+            <span class="header-title">详情</span>
+        </div>
+        <div class="iterms">
+            <p class="t-bold">你好我是详情。</p>
+            
+        </div>
+    </div>
+    <!--/ container -->
+
+</body>
+
+</html>
